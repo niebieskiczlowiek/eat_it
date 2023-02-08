@@ -11,6 +11,9 @@ def ping():
 @app.post('/users')
 def create_user() -> Response:
     user = request.json
+    controller = AddUserController()
+    add_user_request = AddUserRequest(user=user)
+    controller.add(request=add_user_request)
     return jsonify(user)
 
 @app.get('/users')

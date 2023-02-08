@@ -1,4 +1,4 @@
-from app import app
+from eat_it.app import ping
 
 UNIMPLEMENTED = 501
 
