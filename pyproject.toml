@@ -7,7 +7,7 @@ readme = "README.md"
 packages = [{include = "eat_it"}]
 
 [tool.poetry.dependencies]
-python = "^3.10"
+python = "^3.9"
 flask = "^2.2.2"
 
 
