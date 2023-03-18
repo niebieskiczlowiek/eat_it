@@ -7,3 +7,9 @@ class UserRepository:
 
     def put(self) -> None:
         raise NotImplementedError
+
+    def delete(self) -> None:
+        raise NotImplementedError
+
+    def patch(self) -> None:
+        raise NotImplementedError

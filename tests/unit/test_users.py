@@ -8,7 +8,7 @@ from eat_it.app import create_user, update_user
 
 @pytest.fixture
 def payload() -> dict:
-    return {"first_name": "Jan", "last_name": "Kowalski"}
+    return {"id": 1, "first_name": "Jan", "last_name": "Kowalski"}
 
 
 def test_create_user_returns_user(payload: dict) -> None:
@@ -27,5 +27,5 @@ def test_create_user_prints_user_on_console(payload: dict, capsys) -> None:
 
 def test_update_user_returns_user(payload: dict) -> None:
     with app.test_request_context(method="PUT", path="/users", json=payload):
-        result = update_user()
+        result = update_user(user_id=1)
     assert result.json == payload

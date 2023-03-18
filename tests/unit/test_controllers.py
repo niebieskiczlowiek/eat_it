@@ -6,7 +6,7 @@ import pytest
 from _pytest.capture import CaptureFixture
 
 
-from eat_it.controllers import AddUserController, AddUserRequest
+from eat_it.controllers import AddUserController, AddUserRequest, GetUserController
 from eat_it.repositories import UserRepository
 
 
@@ -24,13 +24,13 @@ def payload() -> AddUserController:
 
 
 def test_add_user_controller_has_add_method(capsys: CaptureFixture, payload: dict, repository: UserRepository) -> None:
-    controller = AddUserController()
+    repository2 = Mock(UserRepository)
+    controller = AddUserController(repository=repository2)
     request = AddUserRequest(user=payload)
     controller.add(request)
     actual = capsys.readouterr().out
     expected = f"{json.dumps(payload)}\n".replace('"', "'")
     assert actual == expected
-
 
 def test_calls_add_in_repository_on_calling_controller(
         controller: AddUserController,
@@ -48,6 +48,6 @@ def test_add_user_request_has_user_attribute(payload: dict) -> None:
 
 
 def test_get_user_controller() -> None:
-    controller = getUserController()
+    controller = GetUserController()
     with pytest.raises(NotImplementedError):
         controller.get(1)
