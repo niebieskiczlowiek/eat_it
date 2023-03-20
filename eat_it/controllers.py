@@ -8,19 +8,27 @@ class GetUserRequest:
 @dataclass
 class AddUserRequest:
     user: dict
+
+
 @dataclass
 class PutUserRequest:
     user: dict
+
 
 @dataclass
 class DeleteUserRequest:
     user_id: int
 
+
 @dataclass 
 class PatchUserRequest:
     user: dict
 
+
 class GetUserController:
+    def __init__(self, repository: UserRepository):
+        pass
+
     def get(self, request: GetUserRequest) -> None:
         raise NotImplementedError()
 
@@ -42,6 +50,9 @@ class PutUserController:
 
 
 class DeleteUserController:
+    def __init__(self, repository: UserRepository):
+        pass
+
     def delete(self, request: DeleteUserRequest) -> None:
         raise NotImplementedError()
 

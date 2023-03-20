@@ -38,4 +38,4 @@ def test_app_user_patch_endpoint() -> None:
 def test_app_user_delete_endpoint() -> None:
     client = app.test_client()
     response = client.delete(path='/users/1')
-    assert response.status_code == 204
+    assert response.status_code == UNIMPLEMENTED

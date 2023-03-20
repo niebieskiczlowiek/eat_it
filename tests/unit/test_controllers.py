@@ -48,6 +48,6 @@ def test_add_user_request_has_user_attribute(payload: dict) -> None:
 
 
 def test_get_user_controller() -> None:
-    controller = GetUserController()
+    controller = GetUserController(repository=UserRepository())
     with pytest.raises(NotImplementedError):
         controller.get(1)

@@ -19,13 +19,14 @@ def ping():
 # Z pracy domowej:
 @app.get('/users')
 def get_users():
-    controller = GetUserController()
+    repository = UserRepository()
+    controller = GetUserController(repository=repository)
     try:
         get_user_request = GetUserRequest()
         controller.get(request=get_user_request)
     except NotImplementedError:
         return Response(status=501)
-    return Response(status=500)
+    return Response(status=200)
 
 
 @app.post('/users')
@@ -69,10 +70,11 @@ def patch_user(user_id) -> Response:
 
 @app.delete('/users/<user_id>')
 def delete_user(user_id) -> Response:
-    controller = DeleteUserController()
+    repository = UserRepository()
+    controller = DeleteUserController(repository=repository)
     try:
         delete_user_request = DeleteUserRequest(user_id=user_id)
         controller.delete(request=delete_user_request)
     except NotImplementedError:
-        pass
-    return Response(status=204)
+        return Response(status=501)
+    return Response(status=200)
