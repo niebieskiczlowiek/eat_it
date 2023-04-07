@@ -46,7 +46,7 @@ class PutUserController:
         pass
 
     def put(self, request: PutUserRequest) -> None:
-        print(request)
+        raise NotImplementedError()
 
 
 class DeleteUserController:
